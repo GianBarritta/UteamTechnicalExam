@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "persons")
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE contacts SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE persons SET deleted = true WHERE id = ?")
 @Where(clause = "deleted = false")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -41,7 +41,7 @@ public class Person {
     private boolean hasInsurance;
 
     @OneToMany(mappedBy = "movies")
-    private List<String> favouriteMovies;
+    private List<Movie> favouriteMovies;
 
     @CreationTimestamp
     @Column(name = "creation_date", updatable = false)
