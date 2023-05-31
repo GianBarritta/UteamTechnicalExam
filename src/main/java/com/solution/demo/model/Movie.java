@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,10 +29,11 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Field title cannot be null")
     private String title;
 
-    @Column(name = "genre_id", nullable = false)
-    private Long genreId;
+    @NotBlank(message = "Field genre cannot be null")
+    private String genre;
 
     @ManyToOne(
             cascade = {
