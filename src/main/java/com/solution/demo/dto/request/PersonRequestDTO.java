@@ -1,4 +1,4 @@
-package com.solution.demo.dto.response;
+package com.solution.demo.dto.request;
 
 import com.solution.demo.model.Movie;
 
@@ -13,9 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonResponseDTO {
-
-    private Long id;
+public class PersonRequestDTO {
 
     private String firstName;
 
