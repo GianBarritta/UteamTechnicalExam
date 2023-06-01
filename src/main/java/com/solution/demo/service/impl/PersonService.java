@@ -2,6 +2,7 @@ package com.solution.demo.service.impl;
 
 import com.solution.demo.dto.request.PersonRequestDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
+import com.solution.demo.exception.*;
 import com.solution.demo.mapper.GenericMapper;
 import com.solution.demo.model.Person;
 import com.solution.demo.repository.PersonRepository;
@@ -45,16 +46,17 @@ public class PersonService {
         Person entity = getPersonById(id);
         return mapper.map(entity, PersonResponseDTO.class);
     }
-
+/*
     public PersonResponseDTO getByName(Long id, String firstName) {
         Person entity = getPersonById(id);
         try {
-            entity.getFirstName(firstName);
+            entity.getFirstName(firstName); //TODO: no devuelve dicho valor
         } catch (Exception e) {
-            UnableToFoundPersonException(messageSource.getMessage("unable-to-found-person",new Object[] {id}, Locale.US));
+            throw new UnableToFoundEntityException(messageSource.getMessage("unable-to-found-person",new Object[] {id}, Locale.US));
         }
         return mapper.map(entity, PersonResponseDTO.class);
     }
+ **/
 
     public PersonResponseDTO update(PersonRequestDTO dto, Long id) {
         Person entity = getPersonById(id);
@@ -65,8 +67,8 @@ public class PersonService {
             updatedEntity.setUpdateDate(LocalDateTime.now());
             updatedEntity = repository.save(updatedEntity);
             return mapper.map(updatedEntity, PersonResponseDTO.class);
-        }catch (Exception e) {
-            throw new UnableToUpdatePersonException(messageSource.getMessage("unable-to-update-person",new Object[] {id}, Locale.US));
+        } catch (Exception e) {
+            throw new UnableToUpdateEntityException(messageSource.getMessage("unable-to-update-person",new Object[] {id}, Locale.US));
         }
     }
 
@@ -76,7 +78,7 @@ public class PersonService {
             entity.setUpdateDate(LocalDateTime.now());
             repository.deleteById(id);
         } catch (Exception e) {
-            throw new UnableToDeletePersonException(messageSource.getMessage("unable-to-delete-person", new Object[] {id}, Locale.US));
+            throw new UnableToDeleteEntityException(messageSource.getMessage("unable-to-delete-person", new Object[] {id}, Locale.US));
         }
     }
 
