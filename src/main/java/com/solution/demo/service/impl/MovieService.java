@@ -35,11 +35,12 @@ public class MovieService {
     }
 
     public List<PersonResponseDTO> findAll(){
-        List<Person> persons = personRepository.findAll();
-        if (persons.isEmpty()) {
+        Person person = new Person();
+        List<Movie> favouriteMovies = person.getFavouriteMovies();
+        if (favouriteMovies.isEmpty()) {
             throw new EmptyListException(messageSource.getMessage("empty-list", null, Locale.US));
         }
-        return mapper.mapAll(persons, PersonResponseDTO.class);
+        return mapper.mapAll(favouriteMovies, PersonResponseDTO.class);
     }
 
     public PersonResponseDTO removePerson(Long movieId, Long personId) {
