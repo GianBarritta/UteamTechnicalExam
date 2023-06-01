@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface IPersonService {
 
-    PersonResponseDTO save(PersonRequestDTO dto);
+    PersonResponseDTO create(PersonRequestDTO dto);
 
     PersonResponseDTO getById(Long id);
 
-    PersonResponseDTO getByName(String name, String lastName);
+    PersonResponseDTO getByName(Long id, String firstName);
 
     List<PersonResponseDTO> findAll();
 
