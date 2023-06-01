@@ -16,6 +16,13 @@ import static org.springframework.http.HttpStatus.*;
 @RestControllerAdvice
 public class HandlerExceptionController {
 
+    @ResponseStatus(OK)
+    @ExceptionHandler({ EmptyListException.class })
+    @ResponseBody
+    public CustomExceptionDetails emptyList(HttpServletRequest request, Exception exception) {
+        return new CustomExceptionDetails(exception, request.getRequestURI());
+    }
+
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler({ NotFoundException.class})
     @ResponseBody
