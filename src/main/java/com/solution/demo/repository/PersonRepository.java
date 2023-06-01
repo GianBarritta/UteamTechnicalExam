@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface PersonRepository extends JpaRepository<Person, Long>{
 
     @Query("SELECT firstName FROM Person p WHERE p.firstName = :firstName")
-    public String findByFirstName (@Param("firstName") String firstName);
+    String findByFirstName (@Param("firstName") String firstName);
 
     @Query("SELECT lastName FROM Person p WHERE p.lastName = :lastName")
-    public String findByLastName (@Param("lastName") String lastName);
+    String findByLastName (@Param("lastName") String lastName);
 }

@@ -33,8 +33,8 @@ public class MovieService {
         return mapper.map(person, PersonResponseDTO.class);
     }
 
-    public List<PersonResponseDTO> findAll(){
-        Person person = new Person();
+    public List<PersonResponseDTO> findAll(Long id){
+        Person person = getPersonById(id);
         List<Movie> favouriteMovies = person.getFavouriteMovies();
         if (favouriteMovies.isEmpty()) {
             throw new EmptyListException(messageSource.getMessage("empty-list", null, Locale.US));

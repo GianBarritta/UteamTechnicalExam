@@ -11,7 +11,7 @@ public interface IPersonService {
 
     PersonResponseDTO getById(Long id);
 
-    PersonResponseDTO getByName(String firstName);
+    PersonResponseDTO getByName(Long id, String firstName);
 
     List<PersonResponseDTO> findAll();
 

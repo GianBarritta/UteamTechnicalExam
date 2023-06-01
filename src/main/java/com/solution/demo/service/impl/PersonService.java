@@ -46,17 +46,12 @@ public class PersonService {
         Person entity = getPersonById(id);
         return mapper.map(entity, PersonResponseDTO.class);
     }
-/*
+
     public PersonResponseDTO getByName(Long id, String firstName) {
-        Person entity = getPersonById(id);
-        try {
-            entity.getFirstName(firstName); //TODO: no devuelve dicho valor
-        } catch (Exception e) {
-            throw new UnableToFoundEntityException(messageSource.getMessage("unable-to-found-person",new Object[] {id}, Locale.US));
-        }
-        return mapper.map(entity, PersonResponseDTO.class);
+        Person person = getPersonById(id);
+        String namePerson = repository.findByFirstName(firstName);
+        return mapper.map(namePerson, PersonResponseDTO.class);
     }
- **/
 
     public List<PersonResponseDTO> findAll(){
         List<Person> persons = repository.findAll();
