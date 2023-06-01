@@ -40,8 +40,18 @@ public class Person {
 
     private boolean hasInsurance;
 
+    private int maxMovies = 25;
+
     @OneToMany(mappedBy = "movies")
-    private List<Movie> favouriteMovies;
+    private List<Movie> favouriteMovies = new List<>() { //TODO: fix list inconsistency
+        List<Movie> maxMoviesAllowed(List<Movie> list, int maxMovies) {
+            if (list.size() <= 25) {
+                return list;
+            } else {
+                return list.subList(0, maxMovies);
+            }
+        }
+    };
 
     @CreationTimestamp
     @Column(name = "creation_date", updatable = false)
