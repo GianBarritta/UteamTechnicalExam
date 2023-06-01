@@ -50,7 +50,7 @@ public class PersonService {
     public PersonResponseDTO getByName(Long id, String firstName) {
         Person entity = getPersonById(id);
         try {
-            entity.getFirstName(firstName); //TODO: no devuelve dicho valor
+            entity.getFirstName(firstName); //TODO: does not return that value
         } catch (Exception e) {
             throw new UnableToFoundEntityException(messageSource.getMessage("unable-to-found-person",new Object[] {id}, Locale.US));
         }
@@ -90,3 +90,4 @@ public class PersonService {
         return person.get();
     }
 }
+
