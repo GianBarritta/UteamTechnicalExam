@@ -11,11 +11,11 @@ public interface IPersonService {
 
     PersonResponseDTO getById(Long id);
 
-    PersonResponseDTO getByName(Long id, String firstName);
+    PersonResponseDTO getByName(String firstName);
 
     List<PersonResponseDTO> findAll();
 
-    PersonResponseDTO update(PersonRequestDTO dto);
+    PersonResponseDTO update(Long id, PersonRequestDTO dto);
 
     void delete(Long id);
 }

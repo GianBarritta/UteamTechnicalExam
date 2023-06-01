@@ -58,7 +58,7 @@ public class PersonService {
     }
  **/
 
-    public PersonResponseDTO update(PersonRequestDTO dto, Long id) {
+    public PersonResponseDTO update(Long id, PersonRequestDTO dto) {
         Person entity = getPersonById(id);
         try {
             Person updatedEntity = mapper.map(dto, Person.class);
