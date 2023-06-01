@@ -52,4 +52,12 @@ public class Person {
     private LocalDateTime updateDate;
 
     private boolean deleted = Boolean.FALSE;
+
+    public void addMovie(Movie movie) {
+        this.getFavouriteMovies().add(movie);
+    }
+
+    public void removeMovie(Movie movie) {
+        this.getFavouriteMovies().remove(movie);
+    }
 }
