@@ -1,8 +1,8 @@
 package com.solution.demo.exception;
 
-public class UnableToFoundPersonException extends RuntimeException{
+public class UnableToFoundEntityException extends RuntimeException{
 
-    public UnableToFoundPersonException(String message){
+    public UnableToFoundEntityException(String message){
         super(message);
     }
 }

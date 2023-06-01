@@ -1,8 +1,8 @@
 package com.solution.demo.exception;
 
-public class UnableToUpdatePersonException extends RuntimeException{
+public class UnableToUpdateEntityException extends RuntimeException{
 
-    public UnableToUpdatePersonException(String message) {
+    public UnableToUpdateEntityException(String message) {
         super(message);
     }
 }

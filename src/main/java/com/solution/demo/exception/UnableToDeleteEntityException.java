@@ -1,8 +1,8 @@
 package com.solution.demo.exception;
 
-public class UnableToDeletePersonException extends RuntimeException {
+public class UnableToDeleteEntityException extends RuntimeException {
 
-    public UnableToDeletePersonException(String message) {
+    public UnableToDeleteEntityException(String message) {
         super(message);
     }
 }
