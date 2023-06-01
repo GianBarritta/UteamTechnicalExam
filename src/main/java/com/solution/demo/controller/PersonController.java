@@ -29,8 +29,8 @@ public class PersonController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<PersonResponseDTO> getByName(@PathVariable String firstName, @RequestBody Long id)  {
-        return ResponseEntity.status(HttpStatus.OK).body(service.getByName(id, firstName));
+    public ResponseEntity<PersonResponseDTO> getByName(@PathVariable String firstName)  {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getByName(firstName));
     }
 
     @GetMapping("/all")

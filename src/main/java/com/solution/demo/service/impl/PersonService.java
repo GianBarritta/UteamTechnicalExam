@@ -47,8 +47,7 @@ public class PersonService {
         return mapper.map(entity, PersonResponseDTO.class);
     }
 
-    public PersonResponseDTO getByName(Long id, String firstName) {
-        Person person = getPersonById(id);
+    public PersonResponseDTO getByName(String firstName) {
         String namePerson = repository.findByFirstName(firstName);
         return mapper.map(namePerson, PersonResponseDTO.class);
     }
