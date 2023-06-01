@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/persons")
@@ -30,6 +31,11 @@ public class PersonController {
     @GetMapping("/{name}")
     public ResponseEntity<PersonResponseDTO> getByName(PersonRequestDTO dto)  {
         return ResponseEntity.status(HttpStatus.OK).body(service.getByName(dto));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<PersonResponseDTO>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
 
     @PutMapping("/{id}")
