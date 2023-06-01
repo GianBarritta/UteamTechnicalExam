@@ -1,6 +1,5 @@
 package com.solution.demo.service.impl;
 
-import com.solution.demo.dto.response.MovieResponseDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
 import com.solution.demo.exception.*;
 import com.solution.demo.mapper.GenericMapper;

@@ -58,6 +58,14 @@ public class PersonService {
     }
  **/
 
+    public List<PersonResponseDTO> findAll(){
+        List<Person> persons = repository.findAll();
+        if (persons.isEmpty()) {
+            throw new EmptyListException(messageSource.getMessage("empty-list", null, Locale.US));
+        }
+        return mapper.mapAll(persons, PersonResponseDTO.class);
+    }
+
     public PersonResponseDTO update(Long id, PersonRequestDTO dto) {
         Person entity = getPersonById(id);
         try {
