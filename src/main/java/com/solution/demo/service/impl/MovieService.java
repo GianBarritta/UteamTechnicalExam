@@ -1,5 +1,6 @@
 package com.solution.demo.service.impl;
 
+import com.solution.demo.dto.response.MovieResponseDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
 import com.solution.demo.exception.*;
 import com.solution.demo.mapper.GenericMapper;
@@ -33,13 +34,13 @@ public class MovieService {
         return mapper.map(person, PersonResponseDTO.class);
     }
 
-    public List<PersonResponseDTO> findAll(Long id){
+    public List<Movie> getAll(Long id){
         Person person = getPersonById(id);
         List<Movie> favouriteMovies = person.getFavouriteMovies();
         if (favouriteMovies.isEmpty()) {
             throw new EmptyListException(messageSource.getMessage("empty-list", null, Locale.US));
         }
-        return mapper.mapAll(favouriteMovies, PersonResponseDTO.class);
+        return mapper.mapAll(favouriteMovies, Movie.class);
     }
 
     public PersonResponseDTO removePerson(Long movieId, Long personId) {
