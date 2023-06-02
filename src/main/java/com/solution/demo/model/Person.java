@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,15 +41,19 @@ public class Person {
 
     private boolean hasInsurance;
 
-    private int maxMovies = 25;
-
     @OneToMany(mappedBy = "movies")
-    private List<Movie> favouriteMovies = new List<>() { //TODO: fix list inconsistency
-        List<Movie> maxMoviesAllowed(List<Movie> list, int maxMovies) {
-            if (list.size() <= 25) {
-                return list;
+    private List<Movie> favouriteMovies = new ArrayList<>() {
+        @Override
+        public List<Movie> subList(int fromIndex, int toIndex) {
+            if (fromIndex >= 0 && toIndex <= size() && fromIndex <= toIndex) {
+                if (size() <= 25) {
+                    return this;
+                } else {
+                    int endIndex = Math.min(toIndex, 25);
+                    return super.subList(fromIndex, endIndex);
+                }
             } else {
-                return list.subList(0, maxMovies);
+                throw new IndexOutOfBoundsException();
             }
         }
     };
