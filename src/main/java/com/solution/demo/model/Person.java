@@ -10,6 +10,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.io.Serializable;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -24,10 +25,11 @@ import java.util.List;
 @Where(clause = "deleted = false")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person {
+public class Person implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
     private Long id;
 
     @NotBlank(message = "Field name cannot be null")
@@ -43,7 +45,6 @@ public class Person {
 
     @OneToMany(mappedBy = "movies")
     private List<Movie> favouriteMovies = new ArrayList<>() {
-        @Override
         public List<Movie> subList(int fromIndex, int toIndex) {
             if (fromIndex >= 0 && toIndex <= size() && fromIndex <= toIndex) {
                 if (size() <= 25) {

@@ -2,10 +2,7 @@ package com.solution.demo.exception.handler;
 
 import com.solution.demo.exception.*;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.web.firewall.RequestRejectedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -41,13 +38,10 @@ public class HandlerExceptionController {
 
     @ResponseStatus(BAD_REQUEST)
     @ExceptionHandler({ArithmeticException.class,
-            MissingRequestHeaderException.class,
-            RequestRejectedException.class,
             MethodArgumentNotValidException.class,
             NullPointerException.class,
             IllegalArgumentException.class,
             IndexOutOfBoundsException.class,
-            BadCredentialsException.class
     })
     @ResponseBody
     public CustomExceptionDetails badRequest(HttpServletRequest request, Exception exception) {

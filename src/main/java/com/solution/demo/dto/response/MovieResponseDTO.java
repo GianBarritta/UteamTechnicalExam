@@ -1,10 +1,11 @@
 package com.solution.demo.dto.response;
 
-import com.solution.demo.model.Person;
+import com.solution.demo.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.io.Serializable;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieResponseDTO {
+public class MovieResponseDTO implements Serializable{
 
     private Long id;
 
@@ -20,5 +21,5 @@ public class MovieResponseDTO {
 
     private String genre;
 
-    private List<Person> persons;
+    private List<Movie> favouriteMovies;
 }

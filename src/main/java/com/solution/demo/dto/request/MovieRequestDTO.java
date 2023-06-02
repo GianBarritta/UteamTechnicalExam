@@ -1,22 +1,23 @@
 package com.solution.demo.dto.request;
 
-import com.solution.demo.model.Person;
+import com.solution.demo.model.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieRequestDTO {
+public class MovieRequestDTO implements Serializable {
 
     private String title;
 
     private String genre;
 
-    private List<Person> persons;
+    private List<Movie> favouriteMovies;
 }
