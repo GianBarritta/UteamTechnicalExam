@@ -1,6 +1,7 @@
 package com.solution.demo.service.impl;
 
 import com.solution.demo.dto.request.PersonRequestDTO;
+import com.solution.demo.dto.response.PersonListDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
 import com.solution.demo.exception.*;
 import com.solution.demo.mapper.GenericMapper;
@@ -52,12 +53,12 @@ public class PersonService {
         return mapper.map(namePerson, PersonResponseDTO.class);
     }
 
-    public List<PersonResponseDTO> findAll(){
+    public List<PersonListDTO> findAll(){
         List<Person> persons = repository.findAll();
         if (persons.isEmpty()) {
             throw new EmptyListException(messageSource.getMessage("empty-list", null, Locale.US));
         }
-        return mapper.mapAll(persons, PersonResponseDTO.class);
+        return mapper.mapAll(persons, PersonListDTO.class);
     }
 
     public PersonResponseDTO update(Long id, PersonRequestDTO dto) {

@@ -1,6 +1,7 @@
 package com.solution.demo.service;
 
 import com.solution.demo.dto.request.PersonRequestDTO;
+import com.solution.demo.dto.response.PersonListDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface IPersonService {
 
     PersonResponseDTO getByName(String firstName);
 
-    List<PersonResponseDTO> findAll();
+    List<PersonListDTO> findAll();
 
     PersonResponseDTO update(Long id, PersonRequestDTO dto);
 

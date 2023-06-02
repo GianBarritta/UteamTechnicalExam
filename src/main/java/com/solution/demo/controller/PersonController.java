@@ -1,6 +1,7 @@
 package com.solution.demo.controller;
 
 import com.solution.demo.dto.request.PersonRequestDTO;
+import com.solution.demo.dto.response.PersonListDTO;
 import com.solution.demo.dto.response.PersonResponseDTO;
 import com.solution.demo.service.IPersonService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class PersonController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<PersonResponseDTO>> findAll() {
+    public ResponseEntity<List<PersonListDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
     }
 
